@@ -12,7 +12,11 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="countdown" class="countdown">
+    <h1>Countdown to Mey's Birthday</h1>
+    <p id="timer"></p>
+  </div>
+  <div id="mainContent" class="container" style="display:none;">
     <div class="one">
       <h1 class="one">
         <span data-node-name="greeting">Hey</span>
@@ -125,6 +129,35 @@
       <p class="last-smile" data-node-name="outroSmiley">:)</p>
     </div>
   </div>
+  <script>
+    // Set birthday date
+    const birthday = new Date('2025-04-02T00:00:00'); // Update this to Mey's birthday in 'YYYY-MM-DD' format
+
+    // Calculate remaining time
+    function calculateTimeLeft() {
+      const now = new Date();
+      const timeDifference = birthday - now;
+
+      if (timeDifference <= 0) {
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // Call the function every 1 second to update the countdown
+        setTimeout(calculateTimeLeft, 1000);
+      }
+    }
+
+    // Start countdown
+    calculateTimeLeft();
+  </script>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>

@@ -2,6 +2,28 @@ html {
   box-sizing: border-box;
 }
 
+#music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #ff4081; /* Pink button */
+  color: white;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+#music-btn:hover {
+  transform: scale(1.1);
+  background-color: #e91e63;
+}
+
+
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
